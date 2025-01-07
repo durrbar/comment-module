@@ -1,12 +1,16 @@
 {
     "name": "durrbar/comment-module",
-    "description": "",
+    "type": "laravel-module",
+    "description": "Laravel comment module",
     "authors": [
         {
             "name": "Kid Max",
             "email": "kidmax285@gmail.com"
         }
     ],
+    "homepage": "https://github.com/ikidmax/comment-module",
+    "license": "MIT",
+    "version": "0.0.1",
     "extra": {
         "laravel": {
             "providers": [],
