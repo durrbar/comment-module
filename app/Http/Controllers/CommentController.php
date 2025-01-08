@@ -4,8 +4,8 @@ namespace Modules\Comment\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Database\Eloquent\Relations\Relation;
+use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Modules\Comment\Http\Requests\CommentRequest;
@@ -15,6 +15,8 @@ use Modules\Comment\Http\Resources\CommentResource;
 
 class CommentController extends Controller
 {
+    use AuthorizesRequests;
+
     /**
      * Display a listing of the resource.
      */

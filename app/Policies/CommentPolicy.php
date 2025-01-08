@@ -65,7 +65,7 @@ class CommentPolicy
     public function update(User $user, Comment $comment): bool
     {
         // Allow super-admins or the owner of the comment to update it.
-        return $user->hasRole('super-admin') || $user->id === $comment->user_id;
+        return $user->hasRole('Super Admin') || $user->id === $comment->user_id;
     }
 
     /**
@@ -78,7 +78,7 @@ class CommentPolicy
     public function delete(User $user, Comment $comment): bool
     {
         // Allow super-admins or the owner of the comment to delete it.
-        return $user->hasRole('super-admin') || $user->id === $comment->user_id;
+        return $user->hasRole('Super Admin') || $user->id === $comment->user_id;
     }
 
     /**
@@ -91,7 +91,7 @@ class CommentPolicy
     public function restore(User $user, Comment $comment): bool
     {
         // Only super-admins can restore comments.
-        return $user->hasRole('super-admin');
+        return $user->hasRole('Super Admin');
     }
 
     /**
@@ -104,6 +104,6 @@ class CommentPolicy
     public function forceDelete(User $user, Comment $comment): bool
     {
         // Only super-admins can permanently delete comments.
-        return $user->hasRole('super-admin');
+        return $user->hasRole('Super Admin');
     }
 }
