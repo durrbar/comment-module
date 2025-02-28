@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('comments', function (Blueprint $table) {
             $table->uuid('id')->primary();
-            $table->foreignUuid('parent_id')->nullable()->constrained('comments', 'id')->cascadeOnDelete();
             $table->foreignUuid('user_id')->constrained()->cascadeOnDelete();
             $table->uuidMorphs('commentable');
             $table->longText('content');
@@ -22,6 +21,11 @@ return new class extends Migration
 
             // Indexes for performance
             $table->index(['commentable_id', 'commentable_type']);
+        });
+
+        Schema::table('comments', function (Blueprint $table) {
+            $table->foreignUuid('parent_id')->nullable()->constrained('comments')->cascadeOnDelete();
+            
             $table->index('parent_id');
         });
     }
