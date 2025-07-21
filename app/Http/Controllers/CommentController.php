@@ -9,9 +9,9 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Modules\Comment\Http\Requests\CommentRequest;
-use Modules\Comment\Models\Comment;
 use Modules\Comment\Http\Resources\CommentCollection;
 use Modules\Comment\Http\Resources\CommentResource;
+use Modules\Comment\Models\Comment;
 
 class CommentController extends Controller
 {
@@ -104,8 +104,8 @@ class CommentController extends Controller
         // This resolves the model class based on the polymorphic type
         $modelClass = Relation::getMorphedModel($modelType);
 
-        if (!$modelClass) {
-            abort(Response::HTTP_NOT_FOUND, "Invalid model type");
+        if (! $modelClass) {
+            abort(Response::HTTP_NOT_FOUND, 'Invalid model type');
         }
 
         return $modelClass::findOrFail($modelId);

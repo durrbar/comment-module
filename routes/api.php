@@ -14,8 +14,8 @@ use Modules\Comment\Http\Controllers\CommentController;
  *
 */
 
-Route::prefix('v1')->group(function () {
-    Route::prefix('{modelType}/{modelId}')->group(function () {
+Route::prefix('v1')->group(function (): void {
+    Route::prefix('{modelType}/{modelId}')->group(function (): void {
         Route::apiResource('comments', CommentController::class)->names('comment');
     });
 });

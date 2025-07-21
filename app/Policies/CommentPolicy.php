@@ -18,10 +18,10 @@ class CommentPolicy
         //
     }
 
-        /**
+    /**
      * Determine whether the user can view any models.
      *
-     * @param User $user The authenticated user.
+     * @param  User  $user  The authenticated user.
      * @return bool True if viewing any comments is allowed, otherwise false.
      */
     public function viewAny(User $user): bool
@@ -33,8 +33,8 @@ class CommentPolicy
     /**
      * Determine whether the user can view a specific model.
      *
-     * @param User $user The authenticated user.
-     * @param Comment $comment The comment being accessed.
+     * @param  User  $user  The authenticated user.
+     * @param  Comment  $comment  The comment being accessed.
      * @return bool True if viewing the comment is allowed, otherwise false.
      */
     public function view(User $user, Comment $comment): bool
@@ -46,7 +46,7 @@ class CommentPolicy
     /**
      * Determine whether the user can create a comment.
      *
-     * @param User $user The authenticated user.
+     * @param  User  $user  The authenticated user.
      * @return bool True if the user can create comments, otherwise false.
      */
     public function create(User $user): bool
@@ -58,8 +58,8 @@ class CommentPolicy
     /**
      * Determine whether the user can update a specific comment.
      *
-     * @param User $user The authenticated user.
-     * @param Comment $comment The comment being updated.
+     * @param  User  $user  The authenticated user.
+     * @param  Comment  $comment  The comment being updated.
      * @return bool True if the user can update the comment, otherwise false.
      */
     public function update(User $user, Comment $comment): bool
@@ -71,8 +71,8 @@ class CommentPolicy
     /**
      * Determine whether the user can delete a specific comment.
      *
-     * @param User $user The authenticated user.
-     * @param Comment $comment The comment being deleted.
+     * @param  User  $user  The authenticated user.
+     * @param  Comment  $comment  The comment being deleted.
      * @return bool True if the user can delete the comment, otherwise false.
      */
     public function delete(User $user, Comment $comment): bool
@@ -84,8 +84,8 @@ class CommentPolicy
     /**
      * Determine whether the user can restore a specific comment.
      *
-     * @param User $user The authenticated user.
-     * @param Comment $comment The comment being restored.
+     * @param  User  $user  The authenticated user.
+     * @param  Comment  $comment  The comment being restored.
      * @return bool True if the user can restore the comment, otherwise false.
      */
     public function restore(User $user, Comment $comment): bool
@@ -97,8 +97,8 @@ class CommentPolicy
     /**
      * Determine whether the user can permanently delete a specific comment.
      *
-     * @param User $user The authenticated user.
-     * @param Comment $comment The comment being permanently deleted.
+     * @param  User  $user  The authenticated user.
+     * @param  Comment  $comment  The comment being permanently deleted.
      * @return bool True if the user can permanently delete the comment, otherwise false.
      */
     public function forceDelete(User $user, Comment $comment): bool
