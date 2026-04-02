@@ -1,18 +1,28 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Comment\Models;
 
+use Illuminate\Database\Eloquent\Attributes\Fillable;
+use Illuminate\Database\Eloquent\Attributes\Table;
+use Illuminate\Database\Eloquent\Attributes\UsePolicy;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\MorphTo;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Config;
+use Modules\Comment\Policies\CommentPolicy;
 
 // use Modules\Comment\Database\Factories\CommentFactory;
 
+#[Table('comments')]
+#[Fillable(['content', 'user_id', 'parent_id'])]
+#[UsePolicy(CommentPolicy::class)]
 class Comment extends Model
 {
     use HasFactory;
@@ -29,12 +39,6 @@ class Comment extends Model
     /**
      * The table associated with the model.
      */
-    protected $table = 'comments';
-
-    /**
-     * The attributes that are mass assignable.
-     */
-    protected $fillable = ['content', 'user_id', 'parent_id'];
 
     // protected static function newFactory(): CommentFactory
     // {
@@ -62,8 +66,8 @@ class Comment extends Model
     /**
      * Return the replies relationship.
      */
-    public function comments()
+    public function comments(): HasMany
     {
-        return $this->hasMany(Comment::class, 'parent_id')->with('comments');
+        return $this->hasMany(self::class, 'parent_id')->with('comments');
     }
 }
