@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Modules\Comment\Http\Resources;
 
 use Illuminate\Http\Request;
@@ -24,7 +26,7 @@ class CommentResource extends JsonResource
             'updatedAt' => $this->updated_at,
             'deletedAt' => $this->deleted_at,
             'user' => new UserResource($this->user),
-            'comments' => CommentResource::collection($this->whenLoaded('comments')),
+            'comments' => self::collection($this->whenLoaded('comments')),
         ];
     }
 }
